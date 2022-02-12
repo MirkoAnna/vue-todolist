@@ -6,16 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Vue To Do List</title>
 </head>
 <body>
     
-    <div class="container" id="root">
+    <div class="container" id="root" v-cloak>
 
+        <!-- Inizio header -->
+        <header>
+                <img src="img/Logo.png" alt="logo">
+                <h1>To-Do List</h1>
+        </header>
+        <!-- Fine header -->
 
+        <!-- Inizio main -->
+        <main>
+            <div class="container-btn">
+                <input v-model="newToDo" type="text" placeholder="Nuovo Todo" v-on:keyDown.enter="addToDo()">
+                <button v-on:click="addToDo()">Aggiungi</button>
+            </div>
 
-
-
+            <div class="container-list">
+                <ul v-if="toDos.length > 0">
+                                                                                    <!-- If toDo.done è uguale a true aggiungi classe .line-through-on else if aggiungi classe .line-through-off -->
+                    <li v-for="(toDo, index) in toDos" v-on:click="doneUndone(toDo)" v-bind:class="toDo.done ? 'line-through-on' : 'line-through-off' ">
+                        {{toDo.text}}
+                        <div>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </li>
+                </ul>
+                <h2 v-else>Non ci sono ToDo</h2>
+            </div>
+        </main>
+        <!-- Fine main -->
 
     </div>
 
