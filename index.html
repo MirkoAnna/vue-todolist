@@ -28,11 +28,11 @@
 
             <div class="container-list">
                 <ul v-if="toDos.length > 0">
-                                                                                    <!-- If toDo.done è uguale a true aggiungi classe .line-through-on else if aggiungi classe .line-through-off -->
+                                                                                    <!-- If toDo.done è uguale a true aggiungi classe .line-through-on else aggiungi classe .line-through-off -->
                     <li v-for="(toDo, index) in toDos" v-on:click="doneUndone(toDo)" v-bind:class="toDo.done ? 'line-through-on' : 'line-through-off' ">
                         {{toDo.text}}
                         <div>
-                            <i class="fa-solid fa-xmark"></i>
+                            <i v-on:click="removeToDo(index)" class="fa-solid fa-xmark"></i>
                         </div>
                     </li>
                 </ul>

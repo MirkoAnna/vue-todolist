@@ -4,18 +4,18 @@ const root = new Vue (
         data: {
             newToDo: '',
             toDos: [
-                {
-                    text: 'ToDo1',
-                    done: false
-                },
-                {
-                    text: 'ToDo2',
-                    done: true
-                },
-                {
-                    text: 'ToDo3',
-                    done: true
-                },
+                // {
+                //     text: 'ToDo1',
+                //     done: false
+                // },
+                // {
+                //     text: 'ToDo2',
+                //     done: true
+                // },
+                // {
+                //     text: 'ToDo3',
+                //     done: true
+                // },
             ],
         },
         methods: {
@@ -24,6 +24,9 @@ const root = new Vue (
                     this.toDos.push({text: this.newToDo, done: false});
                     this.newToDo = '';
                 }
+            },
+            removeToDo(index) {
+                this.toDos.splice(index, 1);
             },
             doneUndone(toDo) {
                 toDo.done = !toDo.done;
